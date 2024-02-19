@@ -36,7 +36,7 @@ const Loading: FC<LoadingProps> = ({ handleLoaded }) => {
     return () => (clearInterval(interval), clearTimeout(timeout), clearTimeout(timeoutDisappear));
   }, []);
   return (
-    <div className="flex flex-col p-16 h-full loaded">
+    <div className="flex flex-col p-4 h-full loaded max-w-[350px] w-full mx-auto">
       <div className="flex mt-auto bg-white w-full aspect-square rounded-full loading">
         <div className="flex w-[92%] aspect-square rounded-full bg-main m-auto">
           <div className="m-auto text-[52px]">{percent}%</div>
