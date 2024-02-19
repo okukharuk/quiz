@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.css": "/quiz/static/css/main.434c34b1.css",
-    "main.js": "/quiz/static/js/main.e49e6742.js",
+    "main.css": "/quiz/static/css/main.1c1778da.css",
+    "main.js": "/quiz/static/js/main.75e89a12.js",
     "static/media/NunitoBold.ttf": "/quiz/static/media/NunitoBold.32de8fe5bbbebeae1f79.ttf",
     "static/media/NunitoSemiBold.ttf": "/quiz/static/media/NunitoSemiBold.8fcb364a2f5c8c7212ac.ttf",
     "static/media/NunitoRegular.ttf": "/quiz/static/media/NunitoRegular.1f11a66a1136b96b32ad.ttf",
     "static/media/Niconne-Regular.ttf": "/quiz/static/media/Niconne-Regular.679eb669af97c36d86a6.ttf",
     "index.html": "/quiz/index.html",
     "static/media/getFetch.cjs": "/quiz/static/media/getFetch.40f37ddea2378391108f.cjs",
-    "main.434c34b1.css.map": "/quiz/static/css/main.434c34b1.css.map",
-    "main.e49e6742.js.map": "/quiz/static/js/main.e49e6742.js.map"
+    "main.1c1778da.css.map": "/quiz/static/css/main.1c1778da.css.map",
+    "main.75e89a12.js.map": "/quiz/static/js/main.75e89a12.js.map"
   },
   "entrypoints": [
-    "static/css/main.434c34b1.css",
-    "static/js/main.e49e6742.js"
+    "static/css/main.1c1778da.css",
+    "static/js/main.75e89a12.js"
   ]
 }
