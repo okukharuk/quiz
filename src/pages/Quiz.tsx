@@ -40,10 +40,14 @@ const Quiz: FC<QuizProps> = ({}) => {
 
   const options = getOptions(pagesCallbacks);
 
-  const inputLength = Object.keys(input).length;
-  const supposedPage = inputLength + 1;
-
   React.useEffect(() => {
+    setStorageLoaded(true);
+    const storage = getStorage("storage", true);
+    setInput(storage);
+
+    const inputLength = Object.keys(storage).length;
+    const supposedPage = inputLength + 1;
+
     if (+page > options.length || +page <= 0 || Number.isNaN(+page)) {
       navigate("/quiz/1");
     }
@@ -56,10 +60,6 @@ const Quiz: FC<QuizProps> = ({}) => {
       removeStorage("email");
       navigate("/email");
     }
-
-    setStorageLoaded(true);
-    const storage = getStorage("storage", true);
-    setInput(storage);
   }, []);
 
   React.useEffect(() => {

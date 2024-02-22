@@ -16,9 +16,6 @@ i18n
     interpolation: {
       escapeValue: false, // no need for react. it escapes by default
     },
-    backend: {
-      loadPath: "/quiz/locales/{{lng}}/translation.json",
-    },
   });
 
 export default i18n;

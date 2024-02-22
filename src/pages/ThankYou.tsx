@@ -30,7 +30,7 @@ const ThankYou = () => {
   }, []);
 
   return (
-    <div className="flex flex-col p-4 h-full max-w-[350px]">
+    <div className="flex flex-col p-4 h-full max-w-[350px] mx-auto">
       <div className="my-auto flex flex-col items-center">
         <div className="mt-auto text-[36px] font-cursive">{t("thank_you")}</div>
         <div className="mb-16 text-[17px]">{t("for_supporting")}</div>
