@@ -25,6 +25,108 @@
   src: url("../public/fonts/NunitoSemiBold.ttf") format("opentype");
 }
 
+@keyframes to_bottom {
+  from {
+    transform: translateY(-125%);
+  }
+  to {
+    transform: translateY(0%);
+  }
+}
+
+@keyframes to_top {
+  from {
+    transform: translateY(125%);
+  }
+  to {
+    transform: translateY(0%);
+  }
+}
+
+@keyframes to_left {
+  from {
+    transform: translateX(125%);
+  }
+  to {
+    transform: translateX(0%);
+  }
+}
+
+@keyframes to_right {
+  from {
+    transform: translateX(-125%);
+  }
+  to {
+    transform: translateX(0%);
+  }
+}
+
+.check-anim {
+  position: relative;
+
+  &:hover {
+    &::after {
+      clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    }
+  }
+
+  &::after {
+    content: "";
+    transition: all 0.25s ease-in-out;
+    clip-path: polygon(50% 0, 50% 0, 50% 100%, 50% 100%);
+    position: absolute;
+    border-radius: 16px;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: 2px #e4229b solid;
+  }
+}
+
+.col {
+  & > * {
+    margin-right: 0;
+  }
+}
+
+.row {
+  & > *:last-child {
+    margin-right: 0;
+  }
+}
+
+.quiz-from-left {
+  animation: 0.5s to_left forwards ease-in-out;
+}
+
+.quiz-from-right {
+  animation: 0.5s to_right forwards ease-in-out;
+}
+
+.quiz-to-left {
+  animation: 0.4s to_left reverse forwards ease-in-out;
+}
+
+.quiz-to-right {
+  animation: 0.4s to_right reverse forwards ease-in-out;
+}
+
+.text-step-from-top {
+  animation: 0.5s to_bottom forwards;
+}
+
+.text-step-from-bottom {
+  animation: 0.5s to_top forwards;
+}
+
+.text-step-to-top {
+  animation: 0.4s to_bottom reverse forwards;
+}
+
+.text-step-to-bottom {
+  animation: 0.4s to_top reverse forwards;
+}
+
 .check {
   display: flex;
   appearance: none;

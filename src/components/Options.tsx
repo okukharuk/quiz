@@ -6,7 +6,8 @@ import CheckboxOption from "./CheckboxOption";
 import BubbleOption from "./BubbleOption";
 import { useNavigate, useParams } from "react-router-dom";
 import Button from "./Button";
-import { IOptions, options as o } from "../consts";
+import { options as o } from "../consts/quizConfiguration";
+import { IOptions } from "../models/quiz";
 
 interface OptionsProps extends IOptions {
   input: any;
@@ -32,10 +33,10 @@ const Options: FC<OptionsProps> = ({ options, handleClick, header, label, type, 
   };
 
   return (
-    <div className="flex flex-col m-4 w-full h-full">
+    <div className="flex flex-col min-w-full min-h-full">
       <Header text={header} styleHeader={styleHeader} />
       {label && <Label text={label} />}
-      <div style={optionsStyle} className={`mt-8 flex font-semibold ${style}`}>
+      <div style={optionsStyle} className={`mt-8 flex font-semibold items-center justify-center ${style}`}>
         {options.map((option) => {
           switch (type) {
             case "single-select":

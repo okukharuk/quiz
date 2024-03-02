@@ -20,7 +20,10 @@ const CheckboxOption: FC<CheckboxOptionProps> = ({ text, handleClick, isChecked 
     <div
       onClick={handleClick}
       style={isChecked ? checkedStyle : {}}
-      className="flex flex-row h-[76px] w-full bg-secondary mb-4 rounded-[16px] px-[20px] py-[12px] text-[17px] cursor-pointer"
+      className={
+        "flex flex-row h-[76px] w-full bg-secondary mb-4 rounded-[16px] px-[20px] py-[12px] text-[17px] cursor-pointer " +
+        (!isChecked ? "check-anim" : "")
+      }
     >
       <div className="my-auto">{t(text)}</div>
       <Checkbox isChecked={isChecked} handleClick={handleClick} />

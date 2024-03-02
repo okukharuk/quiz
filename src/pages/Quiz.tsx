@@ -1,16 +1,14 @@
-import React, { FC } from "react";
+import React from "react";
 import Step from "../components/Step";
 import { useNavigate, useParams } from "react-router-dom";
 import i18next from "i18next";
 import Options from "../components/Options";
-import { getOptions, options as o } from "../consts";
+import { options as o } from "../consts/quizConfiguration";
 import { getStorage, removeStorage, setStorage } from "../services/storage/storage";
+import { getOptions } from "../utils/quiz";
+import { TInput } from "../models/quiz";
 
-interface QuizProps {}
-
-export type TInput = { [key: string]: string | string[] };
-
-const Quiz: FC<QuizProps> = ({}) => {
+const Quiz = () => {
   const [storageLoaded, setStorageLoaded] = React.useState(false);
   const { page } = useParams() as { page: string };
   const navigate = useNavigate();
@@ -38,7 +36,24 @@ const Quiz: FC<QuizProps> = ({}) => {
 
   const pagesCallbacks = [changeLanguage, handleInput, handleInput, handleMultiple, handleMultiple];
 
-  const options = getOptions(pagesCallbacks);
+  const options = getOptions(o, pagesCallbacks);
+
+  const [currentPage, setCurrentPage] = React.useState(page);
+
+  const pageStyle = React.useMemo(() => {
+    if (page === currentPage) return "";
+    return page < currentPage ? "quiz-from-right" : "quiz-from-left";
+  }, [page, currentPage]);
+
+  const currentPageStyle = React.useMemo(() => {
+    if (page === currentPage) return "";
+    return page > currentPage ? "quiz-to-right" : "quiz-to-left";
+  }, [page, currentPage]);
+
+  React.useEffect(() => {
+    const timeout = setTimeout(() => setCurrentPage(page), 500);
+    return () => clearTimeout(timeout);
+  }, [page]);
 
   React.useEffect(() => {
     setStorageLoaded(true);
@@ -69,9 +84,18 @@ const Quiz: FC<QuizProps> = ({}) => {
 
   return storageLoaded
     ? options[+page - 1] && (
-        <div className="flex flex-col h-full w-full max-w-[350px] items-center m-auto">
+        <div className="flex flex-col h-full w-full max-w-[360px] items-center m-auto overflow-hidden px-[5px]">
           <Step />
-          <Options input={input[page]} {...options[+page - 1]} />
+          <div className="flex flex-row h-full w-full relative">
+            <div className={`flex min-h-full min-w-full ${pageStyle}`}>
+              <Options input={input[page]} {...options[+page - 1]} />
+            </div>
+            {page !== currentPage && (
+              <div className={`absolute flex min-h-full min-w-full ${currentPageStyle}`}>
+                <Options input={input[currentPage]} {...options[+currentPage - 1]} />
+              </div>
+            )}
+          </div>
         </div>
       )
     : null;

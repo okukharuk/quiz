@@ -14,7 +14,7 @@ const Button: React.FC<ButtonProps> = ({ isActive, handleClick, text }) => {
     <div
       onClick={handleClick}
       style={!isActive ? { opacity: "40%" } : {}}
-      className="h-[56px] font-bold w-full bg-hover rounded-full font-bold text-[17px] flex items-center justify-center mt-auto cursor-pointer"
+      className="h-[56px] font-bold w-full bg-hover rounded-full font-bold text-[17px] flex items-center justify-center bottom-0 mt-auto mb-4 cursor-pointer"
     >
       {t(text)}
     </div>

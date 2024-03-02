@@ -1,29 +1,11 @@
-export type TOptionType = "single-select" | "multiple-select" | "bubble";
-
-export interface IOption {
-  text: string;
-  emoji?: string;
-  key: string;
-}
-
-export interface IOptions {
-  type: TOptionType;
-  handleClick: (key: string) => void;
-  header: string;
-  styleHeader?: { word: string; style: React.CSSProperties };
-  limit?: number;
-  label?: string;
-  style?: "row" | "col" | "grid";
-  options: IOption[];
-}
-
-export interface IOptionsTemplate extends Omit<IOptions, "handleClick"> {}
+import { IOptionsTemplate } from "../models/quiz";
 
 export const options: IOptionsTemplate[] = [
   {
     type: "single-select",
     header: "preferred_language",
     label: "choose_language",
+    style: "col",
     options: [
       {
         text: "English",
@@ -69,6 +51,7 @@ export const options: IOptionsTemplate[] = [
   {
     type: "single-select",
     header: "your_age",
+    style: "col",
     options: [
       {
         text: "18-29 years",
@@ -156,9 +139,3 @@ export const options: IOptionsTemplate[] = [
     ],
   },
 ];
-
-export const getOptions = (callbacks: ((key: string) => void)[]): IOptions[] =>
-  options.map((option, index) => ({
-    ...option,
-    handleClick: callbacks[index],
-  }));

@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React from "react";
 import Header from "../components/Header";
 import Label from "../components/Label";
 import TextInput from "../components/TextInput";
@@ -6,8 +6,9 @@ import PrivacyPolicy from "../components/PrivacyPolicy";
 import Loading from "../components/Loading";
 import Button from "../components/Button";
 import { useNavigate } from "react-router-dom";
-import { options } from "../consts";
-import { getStorage, setStorage } from "../services/storage/storage";
+import { options } from "../consts/quizConfiguration";
+import { getStorage, sendInformation, setStorage } from "../services/storage/storage";
+import { TInput } from "../models/quiz";
 
 const Email = () => {
   const [isLoaded, setIsLoaded] = React.useState(false);
@@ -31,11 +32,14 @@ const Email = () => {
   };
 
   React.useEffect(() => {
-    const storage = getStorage("storage", true);
+    const storage = getStorage("storage", true) as TInput;
     const storageLength = Object.keys(storage).length;
+
     if (storageLength !== options.length) {
       navigate(`/quiz/${storageLength || 1}`);
     }
+
+    sendInformation(storage);
   }, []);
 
   return isLoaded ? (

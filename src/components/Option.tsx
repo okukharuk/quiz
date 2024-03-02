@@ -1,5 +1,4 @@
 import React, { FC } from "react";
-import Checkbox from "./Checkbox";
 import { useTranslation } from "react-i18next";
 
 interface OptionProps {
@@ -20,7 +19,10 @@ const Option: FC<OptionProps> = ({ text, handleClick, emoji, isChosen }) => {
   return (
     <div
       style={isChosen ? chosenStyle : {}}
-      className="flex flex-col min-h-[76px] mr-4 py-[20px] w-full bg-secondary mb-4 rounded-[16px] px-[16px] py-[12px] text-[17px] hover:bg-hover/[0.2] hover:outline-hover hover:outline-[2px] hover:outline cursor-pointer"
+      className={
+        "flex flex-col min-h-[76px] mr-4 py-[20px] w-full bg-secondary mb-4 rounded-[16px] px-[16px] py-[12px] text-[17px] hover:bg-hover/[0.2] cursor-pointer " +
+        (!isChosen ? "check-anim" : "")
+      }
       onClick={handleClick}
     >
       {emoji && <div className="w-full aspect-square text-[52px] text-center">{emoji}</div>}

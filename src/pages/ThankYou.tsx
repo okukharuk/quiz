@@ -1,9 +1,9 @@
-import React, { FC } from "react";
+import React from "react";
 import Button from "../components/Button";
-import { t } from "i18next";
+import i18next, { t } from "i18next";
 import Download from "../components/Download";
 import { useNavigate } from "react-router-dom";
-import { options } from "../consts";
+import { options } from "../consts/quizConfiguration";
 import { getStorage, removeStorage } from "../services/storage/storage";
 
 const ThankYou = () => {
@@ -12,6 +12,7 @@ const ThankYou = () => {
   const handleRetake = () => {
     removeStorage("storage");
     removeStorage("email");
+    i18next.changeLanguage("en");
     navigate("/quiz/1");
   };
 

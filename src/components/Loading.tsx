@@ -11,6 +11,7 @@ const Loading: FC<LoadingProps> = ({ handleLoaded }) => {
   const easeInCubic = (elapsed: number, initialValue: number, amountOfChange: number, duration: number): number => {
     return amountOfChange * (elapsed /= duration) * elapsed * elapsed + initialValue;
   };
+
   React.useEffect(() => {
     let frame = 0;
 
@@ -35,6 +36,7 @@ const Loading: FC<LoadingProps> = ({ handleLoaded }) => {
 
     return () => (clearInterval(interval), clearTimeout(timeout), clearTimeout(timeoutDisappear));
   }, []);
+
   return (
     <div className="flex flex-col p-4 h-full loaded max-w-[350px] w-full mx-auto">
       <div className="flex mt-auto bg-white w-full aspect-square rounded-full loading">
